@@ -29,7 +29,7 @@ char get_char_at_xy(int x, int y) {
 		? ci.Char.AsciiChar
 		: '\0';
 }
-/*Posicionar cursor en posicion(x,y)*/
+/* Posicionar cursor en posicion(x,y) */
 void gotoxy(int x, int y) {//Posicionar Cursor [#include<windows.h>]
 	HANDLE hcon;
 	hcon = GetStdHandle(STD_OUTPUT_HANDLE);
