@@ -14,7 +14,7 @@ using namespace std;
 
 int cc = 1, cf = 1;
 char tecla;
-/*Obtener caracter en posicion (x,y)*/
+/* Obtener caracter en posicion (x,y) */
 char get_char_at_xy(int x, int y) {
 	CHAR_INFO ci;
 	COORD xy = { 0, 0 };
