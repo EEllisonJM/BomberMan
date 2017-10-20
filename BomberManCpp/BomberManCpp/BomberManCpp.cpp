@@ -67,7 +67,6 @@ int main()
 			if (mapa[i][j] == 1)
 			{
 				printf("#");
-
 			}
 
 			if (mapa[i][j] == 0)
@@ -85,12 +84,8 @@ int main()
 		tecla = _getch();//tecla = getch();
 		switch (tecla){
 		case DERECHA:
-			//gotoxy(20, 20);
-			//cout << mapa[cc + 1][cf];
-			//cout << get_char_at_xy(cc + 1, cf) << "s";
-
-			if (get_char_at_xy(cc + 1, cf) != '#'){
-
+			if (get_char_at_xy(cc + 1, cf) != '#')
+			{
 				gotoxy(cc, cf);
 				cout << ' ';
 				cc++;
@@ -102,13 +97,7 @@ int main()
 			}
 			break;
 		case IZQUIERDA:
-			//gotoxy(cc, cf);
-			gotoxy(20, 20);
-			//cout << mapa[cc - 1][cf];
-			cout << get_char_at_xy(cc - 1, cf);
 			if (get_char_at_xy(cc - 1, cf) != '#')
-				//if (mapa[cc - 1][cf] != '#')//1=> Obstaculo
-
 			{
 				gotoxy(cc, cf);
 				cout << ' ';
@@ -121,17 +110,10 @@ int main()
 			}
 			break;
 		case ABAJO:
-			//gotoxy(cc, cf);
-			gotoxy(20, 20);
-			//cout << mapa[cc][cf + 1];
-			cout << get_char_at_xy(cc, cf + 1);
-
 			if (get_char_at_xy(cc, cf + 1) != '#')
-				//if (mapa[cc][cf + 1] != '#')
 			{
 				gotoxy(cc, cf);
 				cout << ' ';
-
 				cf++;
 				gotoxy(cc, cf);
 				cout << 'B';
@@ -140,13 +122,8 @@ int main()
 				gotoxy(cc, cf);
 			}
 			break;
-		case ARRIBA:
-			//gotoxy(cc, cf);
-			gotoxy(20, 20);
-			//cout << mapa[cc][cf - 1];
-			cout << get_char_at_xy(cc, cf - 1);
+		case ARRIBA:			
 			if (get_char_at_xy(cc, cf - 1) != '#')
-				//if (mapa[cc][cf - 1] != '#')
 			{
 				gotoxy(cc, cf);
 				cout << ' ';
