@@ -14,7 +14,7 @@ using namespace std;
 
 int cc = 1, cf = 1;
 char tecla;
-
+/*Obtener caracter en posicion (x,y)*/
 char get_char_at_xy(int x, int y) {
 	CHAR_INFO ci;
 	COORD xy = { 0, 0 };
@@ -29,7 +29,7 @@ char get_char_at_xy(int x, int y) {
 		? ci.Char.AsciiChar
 		: '\0';
 }
-
+/*Posicionar cursor en posicion(x,y)*/
 void gotoxy(int x, int y) {//Posicionar Cursor [#include<windows.h>]
 	HANDLE hcon;
 	hcon = GetStdHandle(STD_OUTPUT_HANDLE);
