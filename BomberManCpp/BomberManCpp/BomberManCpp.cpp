@@ -4,6 +4,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<windows.h>
+#include<time.h>
 
 #define ARRIBA 72
 #define ABAJO 80
@@ -41,12 +42,14 @@ void gotoxy(int x, int y) {//Posicionar Cursor [#include<windows.h>]
 
 int main()
 {
+	srand(time(NULL));
+	int num;
 	const int tam_x = 13;
 	const int tam_y = 16;
 
 	int mapa[tam_x][tam_y] =
 	{
-		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },//15
+		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
 		{ 1,0,1,1,1,0,1,0,1,0,1,0,1,0,1 },
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
@@ -54,16 +57,21 @@ int main()
 		{ 1,0,1,0,0,0,0,0,0,0,0,1,0,0,1 },
 		{ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 },
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
-		{ 1,1,1,1,1,1,1,1,1,1,1,0,0,0,0 },
+		{ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 },
 		{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,1 },
 		{ 1,1,1,0,1,0,1,0,1,0,1,0,1,0,1 },
 		{ 1,0,0,0,1,0,0,0,0,0,0,0,0,0,1 },
-		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };//13
+		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
+	};
 
-	for (int i = 0; i<13; i++)
+
+	for (int i = 0; i < 13; i++)
 	{
-		for (int j = 0; j<15; j++)
+		for (int j = 0; j < 15; j++)
 		{
+			//Generamos un random para crear aleatoriamente bloques de premios (x), o fantasmas (f)
+			num = 1 + rand() % (101 - 1);
+
 			if (mapa[i][j] == 1)
 			{
 				printf("#");
@@ -71,13 +79,17 @@ int main()
 
 			if (mapa[i][j] == 0)
 			{
+				if (num >= 0 && num <= 90)
+					printf(" ");
+				if (num > 90 && num <= 95)
+					printf("x");
+				if (num > 95 && num < 100)
+					printf("f");
 
-				printf(" ");
 			}
 		}
 		printf("\n");
 	}
-	
 	gotoxy(cc,cf);
 	cout << 'B';
 	while (tecla != 'x'){
