@@ -136,72 +136,27 @@ void inicioJuego() {
 	gotoxy(cc, cf);
 	cout << 'B';
 }
+/*Metodo de Tralacion*/
+void traslacion(int p1, int p2, int t) {
+	//pintar(p1 + t, p2 + t);
+}
 
 int main()
 {
+	int aux = 0;
 	srand(time(NULL));
 	inicioJuego();
 	int vidas = 3;
 	vida(vidas);
 	//------------------
 	HWND hwnd = ::GetConsoleWindow();
-	while (1) {		
+	while (1) {
 	hola:
-		if((GetKeyState(VK_SPACE) & 0x8000) != 0){
+		if ((GetKeyState(VK_SPACE) & 0x8000) != 0) {
 			Sleep(100);
 			cout << "Space";
 		}
-		if ((GetKeyState(VK_LEFT) & 0x8000) != 0) {
-			Sleep(100);
-			cout << "Izquierda";
-		}
-		if ((GetKeyState(VK_RIGHT) & 0x8000) != 0) {
-			Sleep(100);
-			cout << "Derecha";
-		}
-		Sleep(300);
-		cout << "S";
-		goto hola;
-	}
-	//------------------
-	while (tecla != 'x') {
-		tecla = _getch();//tecla = getch();
-		switch (tecla) {
-		case DERECHA:
-			if (get_char_at_xy(cc + 1, cf) != '#')
-			{
-				gotoxy(cc, cf);
-				if (get_char_at_xy(cc + 1, cf) == 'f')
-				{
-					cout << ' ';
-					cc++;
-					gotoxy(cc, cf);
-					cout << ' ';
-					cc = 1;
-					cf = 1;
-					gotoxy(cc, cf);
-					cout << 'B';
-
-					vidas--;
-					vida(vidas);
-				}
-				if (get_char_at_xy(cc + 1, cf) == 'x')
-				{
-					gotoxy(cc, cf);
-				}
-				else
-				{
-					cout << ' ';
-					cc++;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-			}
-			else {
-				gotoxy(cc, cf);
-			}
-			break;
-		case IZQUIERDA:
+		if ((GetKeyState(VK_LEFT) & 0x8000) != 0) {//Sleep(100);
 			if (get_char_at_xy(cc - 1, cf) != '#')
 			{
 				gotoxy(cc, cf);
@@ -234,7 +189,54 @@ int main()
 			else {
 				gotoxy(cc, cf);
 			}
-			break;
+		}
+		
+	
+		if ((GetKeyState(VK_RIGHT) & 0x8000) != 0) {//Sleep(100);
+			if (get_char_at_xy(cc + 1, cf) != '#')
+			{
+				gotoxy(cc, cf);
+				if (get_char_at_xy(cc + 1, cf) == 'f')
+				{
+					cout << ' ';
+					cc++;
+					gotoxy(cc, cf);
+					cout << ' ';
+					cc = 1;
+					cf = 1;
+					gotoxy(cc, cf);
+					cout << 'B';
+
+					vidas--;
+					vida(vidas);
+				}
+				if (get_char_at_xy(cc + 1, cf) == 'x')
+				{
+					gotoxy(cc, cf);
+				}
+				else
+				{
+					cout << ' ';
+					cc++;
+					gotoxy(cc, cf);
+					cout << 'B';
+				}
+			}
+			else {
+				gotoxy(cc, cf);
+			}
+		}
+		Sleep(100);
+		gotoxy(aux++, 20);
+		cout << "S";
+		goto hola;
+	}
+	//------------------
+	while (tecla != 'x') {
+		tecla = _getch();//tecla = getch();
+		switch (tecla) {
+		case DERECHA:
+		case IZQUIERDA:
 		case ABAJO:
 			if (get_char_at_xy(cc, cf + 1) != '#')
 			{
