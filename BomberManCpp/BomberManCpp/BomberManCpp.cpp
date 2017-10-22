@@ -190,8 +190,6 @@ int main()
 				gotoxy(cc, cf);
 			}
 		}
-		
-	
 		if ((GetKeyState(VK_RIGHT) & 0x8000) != 0) {//Sleep(100);
 			if (get_char_at_xy(cc + 1, cf) != '#')
 			{
@@ -226,18 +224,7 @@ int main()
 				gotoxy(cc, cf);
 			}
 		}
-		Sleep(100);
-		gotoxy(aux++, 20);
-		cout << "S";
-		goto hola;
-	}
-	//------------------
-	while (tecla != 'x') {
-		tecla = _getch();//tecla = getch();
-		switch (tecla) {
-		case DERECHA:
-		case IZQUIERDA:
-		case ABAJO:
+		if ((GetKeyState(VK_DOWN) & 0x8000) != 0) {
 			if (get_char_at_xy(cc, cf + 1) != '#')
 			{
 				gotoxy(cc, cf);
@@ -270,8 +257,8 @@ int main()
 			else {
 				gotoxy(cc, cf);
 			}
-			break;
-		case ARRIBA:
+		}
+		if ((GetKeyState(VK_UP) & 0x8000) != 0) {
 			if (get_char_at_xy(cc, cf - 1) != '#')
 			{
 				gotoxy(cc, cf);
@@ -304,8 +291,13 @@ int main()
 			else {
 				gotoxy(cc, cf);
 			}
-			break;
 		}
+		Sleep(100);
+		gotoxy(aux++, 20);
+		cout << "S";
+		goto hola;
 	}
+	//------------------
+	
 	return 0;
 }
