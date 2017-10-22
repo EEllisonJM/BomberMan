@@ -143,7 +143,27 @@ int main()
 	inicioJuego();
 	int vidas = 3;
 	vida(vidas);
-	
+	//------------------
+	HWND hwnd = ::GetConsoleWindow();
+	while (1) {		
+	hola:
+		if((GetKeyState(VK_SPACE) & 0x8000) != 0){
+			Sleep(100);
+			cout << "Space";
+		}
+		if ((GetKeyState(VK_LEFT) & 0x8000) != 0) {
+			Sleep(100);
+			cout << "Izquierda";
+		}
+		if ((GetKeyState(VK_RIGHT) & 0x8000) != 0) {
+			Sleep(100);
+			cout << "Derecha";
+		}
+		Sleep(300);
+		cout << "S";
+		goto hola;
+	}
+	//------------------
 	while (tecla != 'x') {
 		tecla = _getch();//tecla = getch();
 		switch (tecla) {
