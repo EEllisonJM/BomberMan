@@ -1,4 +1,4 @@
-// BomberManCpp.cpp: define el punto de entrada de la aplicaciÃ³n de consola.
+// BomberManCpp.cpp: define el punto de entrada de la aplicación de consola.
 #include "stdafx.h"
 #include "iostream"
 #include<stdio.h>
@@ -6,7 +6,7 @@
 #include<windows.h>
 #include<stdlib.h>
 #include<time.h>
-//Haciendo cambios en esta compu
+
 
 
 #define ARRIBA 72
@@ -76,9 +76,9 @@ int main()
 	};
 
 
-	for (int i = 0; i<13; i++)
+	for (int i = 0; i < 13; i++)
 	{
-		for (int j = 0; j<15; j++)
+		for (int j = 0; j < 15; j++)
 		{
 			//Generamos un random para crear aleatoriamente bloques de premios (x), o fantasmas (f)
 			num = 1 + rand() % (101 - 1);
@@ -92,7 +92,7 @@ int main()
 			{
 				if (num >= 0 && num <= 90)
 					printf(" ");
-				if (num>90 && num <= 95)
+				if (num > 90 && num <= 95)
 					printf("x");
 				if (num > 95 && num < 100)
 					printf("f");
@@ -104,134 +104,163 @@ int main()
 
 	gotoxy(cc, cf);
 	cout << 'B';
-	while (tecla != 'x') {
-		tecla = _getch();//tecla = getch();
-		switch (tecla) {
-		case DERECHA:
-			if (get_char_at_xy(cc + 1, cf) != '#')
-			{
-				gotoxy(cc, cf);
-				if (get_char_at_xy(cc + 1, cf) == 'f')
-				{
-					cout << ' ';
-					cc++;
-					gotoxy(cc, cf);
-					cout << ' ';
-					cc = 1;
-					cf = 1;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-				if (get_char_at_xy(cc + 1, cf) == 'x')
-				{
-					gotoxy(cc, cf);
-				}
-				else
-				{
-					cout << ' ';
-					cc++;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
+	//------------------
+	int q = 0;
+	int w = 0;
+	while (q == 0) {
+		Sleep(200);
+		gotoxy(w++, 10);
+		//cout << '_';
+		
+		int q = 0;
+		HWND hwnd = ::GetConsoleWindow();
+	hola:
+		while(1){ 
+			if ((/*(::GetForegroundWindow() == hwnd) && */
+				((::GetKeyState(VK_SPACE) & 0x8000) != 0))) {
+				Sleep(100);
+				cout << "Space";
 			}
-			else {
-				gotoxy(cc, cf);
-			}
-			break;
-		case IZQUIERDA:
-			if (get_char_at_xy(cc - 1, cf) != '#')
-			{
-				gotoxy(cc, cf);
-				if (get_char_at_xy(cc - 1, cf) == 'f')
-				{
-					cout << ' ';
-					cc--;
-					gotoxy(cc, cf);
-					cout << ' ';
-					cc = 1;
-					cf = 1;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-				if (get_char_at_xy(cc - 1, cf) == 'x')
-				{
-					gotoxy(cc, cf);
-				}
-				else
-				{
-					cout << ' ';
-					cc--;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-			}
-			else {
-				gotoxy(cc, cf);
-			}
-			break;
-		case ABAJO:
-			if (get_char_at_xy(cc, cf + 1) != '#')
-			{
-				gotoxy(cc, cf);
-				if (get_char_at_xy(cc, cf + 1) == 'f')
-				{
-					cout << ' ';
-					cf++;
-					gotoxy(cc, cf);
-					cout << ' ';
-					cc = 1;
-					cf = 1;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-				if (get_char_at_xy(cc, cf + 1) == 'x')
-				{
-					gotoxy(cc, cf);
-				}
-				else
-				{
-					cout << ' ';
-					cf++;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-			}
-			else {
-				gotoxy(cc, cf);
-			}
-			break;
-		case ARRIBA:
-			if (get_char_at_xy(cc, cf - 1) != '#')
-			{
-				gotoxy(cc, cf);
-				if (get_char_at_xy(cc, cf - 1) == 'f')
-				{
-					cout << ' ';
-					cf--;
-					gotoxy(cc, cf);
-					cout << ' ';
-					cc = 1;
-					cf = 1;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-				if (get_char_at_xy(cc, cf - 1) == 'x')
-				{
-					gotoxy(cc, cf);
-				}
-				else
-				{
-					cout << ' ';
-					cf--;
-					gotoxy(cc, cf);
-					cout << 'B';
-				}
-			}
-			else {
-				gotoxy(cc, cf);
-			}
-			break;
+			Sleep(100);
+			
+			cout << "S";
+			goto hola;			
 		}
+		
 	}
-	return 0;
-}
+	//------------------
+
+		while (tecla != 'x') {
+			tecla = _getch();//tecla = getch();
+
+			Sleep(300);
+
+			switch (tecla) {
+			case DERECHA:
+				if (get_char_at_xy(cc + 1, cf) != '#')
+				{
+					gotoxy(cc, cf);
+					if (get_char_at_xy(cc + 1, cf) == 'f')
+					{
+						cout << ' ';
+						cc++;
+						gotoxy(cc, cf);
+						cout << ' ';
+						cc = 1;
+						cf = 1;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+					if (get_char_at_xy(cc + 1, cf) == 'x')
+					{
+						gotoxy(cc, cf);
+					}
+					else
+					{
+						cout << ' ';
+						cc++;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+				}
+				else {
+					gotoxy(cc, cf);
+				}
+				break;
+			case IZQUIERDA:
+				if (get_char_at_xy(cc - 1, cf) != '#')
+				{
+					gotoxy(cc, cf);
+					if (get_char_at_xy(cc - 1, cf) == 'f')
+					{
+						cout << ' ';
+						cc--;
+						gotoxy(cc, cf);
+						cout << ' ';
+						cc = 1;
+						cf = 1;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+					if (get_char_at_xy(cc - 1, cf) == 'x')
+					{
+						gotoxy(cc, cf);
+					}
+					else
+					{
+						cout << ' ';
+						cc--;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+				}
+				else {
+					gotoxy(cc, cf);
+				}
+				break;
+			case ABAJO:
+				if (get_char_at_xy(cc, cf + 1) != '#')
+				{
+					gotoxy(cc, cf);
+					if (get_char_at_xy(cc, cf + 1) == 'f')
+					{
+						cout << ' ';
+						cf++;
+						gotoxy(cc, cf);
+						cout << ' ';
+						cc = 1;
+						cf = 1;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+					if (get_char_at_xy(cc, cf + 1) == 'x')
+					{
+						gotoxy(cc, cf);
+					}
+					else
+					{
+						cout << ' ';
+						cf++;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+				}
+				else {
+					gotoxy(cc, cf);
+				}
+				break;
+			case ARRIBA:
+				if (get_char_at_xy(cc, cf - 1) != '#')
+				{
+					gotoxy(cc, cf);
+					if (get_char_at_xy(cc, cf - 1) == 'f')
+					{
+						cout << ' ';
+						cf--;
+						gotoxy(cc, cf);
+						cout << ' ';
+						cc = 1;
+						cf = 1;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+					if (get_char_at_xy(cc, cf - 1) == 'x')
+					{
+						gotoxy(cc, cf);
+					}
+					else
+					{
+						cout << ' ';
+						cf--;
+						gotoxy(cc, cf);
+						cout << 'B';
+					}
+				}
+				else {
+					gotoxy(cc, cf);
+				}
+				break;
+			}
+		}
+		return 0;
+	}
