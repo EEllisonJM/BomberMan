@@ -6,7 +6,7 @@
 #include<windows.h>
 #include<stdlib.h>
 #include<time.h>
-//Cambia o no cambia o, ya se 
+//Haciendo cambios en esta compu
 
 
 #define ARRIBA 72
