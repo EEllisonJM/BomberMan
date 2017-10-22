@@ -47,11 +47,49 @@ void gotoxy(int x, int y) {//Posicionar Cursor [#include<windows.h>]
 	SetConsoleCursorPosition(hcon, dwPos);
 }
 
+void vida(int vid)
+{
+	int xV = 5;
+	int yV = 15;
+	int xP = 6;
+
+	gotoxy(xV, yV);
+	cout << "V";
+	gotoxy(xP, yV);
+	cout << ":";
+	cout << vid;
+
+	if (vid < 0)
+	{
+		cc = 0;
+		cf = 0;
+		gotoxy(cc, cf);
+
+		for (int i = 0; i < 13; i++)
+		{
+			for (int j = 0; j < 15; j++)
+			{
+				cout << "X";
+			}
+			printf("\n");
+		}
+		gotoxy(xV, yV);
+		cout << "V";
+		gotoxy(xP, yV);
+		cout << ":";
+		cout << "GAME OVER";
+	}
+	cc = 0;
+	cf = 0;
+	gotoxy(cc, cf);
+}
+
 int main()
 {
 
 	srand(time(NULL));
 	int num;
+	int vidas = 1;
 
 	const int tam_x = 13;
 	const int tam_y = 16;
@@ -102,6 +140,15 @@ int main()
 		printf("\n");
 	}
 
+	
+	vida(vidas);
+
+
+
+
+	cc = 1;
+	cf = 1;
+
 	gotoxy(cc, cf);
 	cout << 'B';
 	while (tecla != 'x') {
@@ -121,6 +168,9 @@ int main()
 					cf = 1;
 					gotoxy(cc, cf);
 					cout << 'B';
+
+					vidas--;
+					vida(vidas);
 				}
 				if (get_char_at_xy(cc + 1, cf) == 'x')
 				{
@@ -152,6 +202,9 @@ int main()
 					cf = 1;
 					gotoxy(cc, cf);
 					cout << 'B';
+
+					vidas--;
+					vida(vidas);
 				}
 				if (get_char_at_xy(cc - 1, cf) == 'x')
 				{
@@ -183,6 +236,9 @@ int main()
 					cf = 1;
 					gotoxy(cc, cf);
 					cout << 'B';
+
+					vidas--;
+					vida(vidas);
 				}
 				if (get_char_at_xy(cc, cf + 1) == 'x')
 				{
@@ -214,6 +270,9 @@ int main()
 					cf = 1;
 					gotoxy(cc, cf);
 					cout << 'B';
+
+					vidas--;
+					vida(vidas);
 				}
 				if (get_char_at_xy(cc, cf - 1) == 'x')
 				{
