@@ -19,11 +19,9 @@ using namespace std;
 
 int cc = 1, cf = 1;
 char tecla;
+
 /* Obtener caracter en posicion (x,y) */
 char get_char_at_xy(int x, int y) {
-
-
-
 	CHAR_INFO ci;
 	COORD xy = { 0, 0 };
 	SMALL_RECT rect = { x, y, x, y };
@@ -46,9 +44,8 @@ void gotoxy(int x, int y) {//Posicionar Cursor [#include<windows.h>]
 	dwPos.Y = y;
 	SetConsoleCursorPosition(hcon, dwPos);
 }
-
-void vida(int vid)
-{
+/*Establecer Vidas de BomberMan*/
+void vida(int vid){
 	int xV = 5;
 	int yV = 15;
 	int xP = 6;
@@ -79,24 +76,15 @@ void vida(int vid)
 		cout << ":";
 		cout << "GAME OVER";
 	}
-	cc = 0;
-	cf = 0;
-	gotoxy(cc, cf);
+	/*cc = 0;
+	cf = 1;
+	gotoxy(cc, cf);*/
 }
-
-int main()
-{
-
-	srand(time(NULL));
+/*Cargar Escenario del Juego*/
+void cargarEscenario(int tam_x, int tam_y) {
 	int num;
-	int vidas = 1;
-
-	const int tam_x = 13;
-	const int tam_y = 16;
-
-
-
-	int mapa[tam_x][tam_y] =
+	//const int x = tam_x;
+	int mapa[13][16] =
 	{
 		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
@@ -114,9 +102,9 @@ int main()
 	};
 
 
-	for (int i = 0; i<13; i++)
+	for (int i = 0; i < 13; i++)
 	{
-		for (int j = 0; j<15; j++)
+		for (int j = 0; j < 15; j++)
 		{
 			//Generamos un random para crear aleatoriamente bloques de premios (x), o fantasmas (f)
 			num = 1 + rand() % (101 - 1);
@@ -130,27 +118,30 @@ int main()
 			{
 				if (num >= 0 && num <= 90)
 					printf(" ");
-				if (num>90 && num <= 95)
+				if (num > 90 && num <= 95)
 					printf("x");
 				if (num > 95 && num < 100)
 					printf("f");
-
 			}
 		}
 		printf("\n");
 	}
-
-	
-	vida(vidas);
-
-
-
-
+}
+/*Metodo inicioJuego*/
+void inicioJuego() {
+	cargarEscenario(13,16);
+	vida(3);
 	cc = 1;
 	cf = 1;
-
 	gotoxy(cc, cf);
 	cout << 'B';
+}
+
+int main()
+{
+	srand(time(NULL));
+	inicioJuego();
+	
 	while (tecla != 'x') {
 		tecla = _getch();//tecla = getch();
 		switch (tecla) {
