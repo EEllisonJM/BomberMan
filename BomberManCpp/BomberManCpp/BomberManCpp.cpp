@@ -6,7 +6,8 @@
 #include<windows.h>
 #include<stdlib.h>
 #include<time.h>
-//Cambia o no cambia
+//Cambia o no cambia o, ya se 
+
 
 #define ARRIBA 72
 #define ABAJO 80
