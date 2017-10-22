@@ -1,4 +1,4 @@
-// BomberManCpp.cpp: define el punto de entrada de la aplicación de consola.
+// BomberManCpp.cpp: define el punto de entrada de la aplicaciÃ³n de consola.
 #include "stdafx.h"
 #include "iostream"
 #include<stdio.h>
@@ -6,7 +6,7 @@
 #include<windows.h>
 #include<stdlib.h>
 #include<time.h>
-//Test de cambios
+//Cambia o no cambia
 
 #define ARRIBA 72
 #define ABAJO 80
