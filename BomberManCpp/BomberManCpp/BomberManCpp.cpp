@@ -130,7 +130,7 @@ void cargarEscenario(int tam_x, int tam_y) {
 /*Metodo inicioJuego*/
 void inicioJuego() {
 	cargarEscenario(13,16);
-	vida(3);
+	
 	cc = 1;
 	cf = 1;
 	gotoxy(cc, cf);
@@ -141,6 +141,8 @@ int main()
 {
 	srand(time(NULL));
 	inicioJuego();
+	int vidas = 3;
+	vida(vidas);
 	
 	while (tecla != 'x') {
 		tecla = _getch();//tecla = getch();
